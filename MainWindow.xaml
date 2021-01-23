@@ -1,0 +1,36 @@
+﻿<Window x:Class="Shutdown_with_timer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shutdown_with_timer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="700
+        ">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.ColumnSpan="3" Grid.Row="0" Text="Weiß ich nicht!" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBox Text="{Binding Zeit}">
+                
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <Button Margin="10" Padding="10" Content="Auftrag erteilen!" FontSize="40" Height="125" Background="Pink" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
