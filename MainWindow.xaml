@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Shutdown_with_timer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="700
-        ">
+        Title="MainWindow" Height="550" Width="500"
+        Background="Pink">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -21,16 +21,17 @@
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.ColumnSpan="3" Grid.Row="0" Text="Weiß ich nicht!" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code"/>
+        <TextBox Background="Aquamarine" Grid.ColumnSpan="3" Grid.Row="0" Text="Weiß ich nicht!" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code"/>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox Text="{Binding Zeit}">
-                
-            </TextBox>
+            <Label FontSize="20">Timer in minutes:</Label>
+            <TextBox x:Name ="TextBox_Timer" FontSize="35" Text="{Binding Zeit}" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Background="LightGray" Width="328"/>
+            <CheckBox Content="Sicher?" x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <Button Margin="10" Padding="10" Content="Auftrag erteilen!" FontSize="40" Height="125" Background="Pink" Click="Button_Click"/>
+            <Button Margin="10" Padding="10" Content="Auftrag erteilen!" FontSize="40" Height="125" Background="LightGray" Click="Button_Click" IsEnabled="{Binding ElementName=chk,Path=IsChecked}"/>
         </StackPanel>
+        <Label FontSize="18" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="456" Margin="22,47,0,0" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

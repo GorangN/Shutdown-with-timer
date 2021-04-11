@@ -22,11 +22,11 @@ namespace Shutdown_with_timer
     public partial class MainWindow : Window
     {
         #region Zeitangabe
-        public int Zeit
-        {
-            get { return (int)GetValue(ZeitProperty); }
-            set { SetValue(ZeitProperty, value); }
-        }
+        //public int Zeit
+        //{
+        //    get { return (int)GetValue(ZeitProperty); }
+        //    set { SetValue(ZeitProperty, value); }
+        //}
         public static readonly DependencyProperty ZeitProperty = DependencyProperty.Register("Zeit", typeof(int), typeof(MainWindow));
         #endregion
 
@@ -38,18 +38,36 @@ namespace Shutdown_with_timer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            void Shutdown()
+            Shutdown(sender, e);
+        }
+
+        private void Shutdown(object sender, RoutedEventArgs e)
+        {
+            bool timeconvert = int.TryParse(TextBox_Timer.Text, out _);
+            if (timeconvert == true)
             {
-                Console.Write("Timer(seconds): ");
-                var x = Console.ReadLine();
-                if (int.TryParse(x, out int timer))
+                string input = TextBox_Timer.Text;
+                if (input == "")
                 {
+                    Shutdown(sender, e);
+                }
+                else if (int.TryParse(input, out int timer))
+                {
+                    timer *= 60;
                     Command($"shutdown -s -t {timer}");
                 }
+                else
+                {
+                    Shutdown(sender, e);
+                }
+            }
+            else
+            {
+                TextBox_Timer.Text.DefaultIfEmpty();
             }
         }
 
-        public static void Command(string input)
+        public void Command(string input)
         {
             Process process = new Process();
             process.StartInfo.FileName = "cmd.exe";
@@ -61,11 +79,12 @@ namespace Shutdown_with_timer
             process.StandardInput.WriteLine(input);
             process.StandardInput.Flush();
             process.StandardInput.Close();
-            Console.WriteLine();
-            Console.WriteLine(process.StandardOutput.ReadToEnd());
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Press Enter");
-            Console.ReadKey();
+        }
+
+        private void TextBox_Timer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            textbox.Clear();
         }
     }
 }
