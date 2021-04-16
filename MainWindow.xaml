@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Shutdown_with_timer"
         mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="550" Width="500"
-        Background="Pink">
+        Background="#0F0F2D">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -21,17 +23,31 @@
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
-        <TextBox Background="Aquamarine" Grid.ColumnSpan="3" Grid.Row="0" Text="Weiß ich nicht!" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code"/>
+        <TextBox Background="#39385D" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown_Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code" TextChanged="TextBox_TextChanged" IsEnabled="False"/>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <Label FontSize="20">Timer in minutes:</Label>
-            <TextBox x:Name ="TextBox_Timer" FontSize="35" Text="{Binding Zeit}" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Background="LightGray" Width="328"/>
-            <CheckBox Content="Sicher?" x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
+            <Label FontSize="20" Foreground="#FE6584">Timer in minutes:</Label>
+            <TextBox x:Name ="TextBox_Timer" Background="#39385D" FontSize="35" Text="{Binding Zeit}" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
+            <CheckBox Content="Sicher?" Background="#FE6584" Foreground="#FE6584" x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Button Margin="10" Padding="10" Content="Auftrag erteilen!" FontSize="40" Height="125" Background="LightGray" Click="Button_Click" IsEnabled="{Binding ElementName=chk,Path=IsChecked}"/>
         </StackPanel>
-        <Label FontSize="18" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="456" Margin="22,47,0,0" Grid.ColumnSpan="3"/>
+        <Label FontSize="18" Foreground="#FE6584" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="456" Margin="22,47,0,0" Grid.ColumnSpan="3"/>
+
+        <Button Content="x" FontSize="40" Foreground="#FE6584" Background="#39385D" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="2" Height="50" Width="42" Margin="0,-20,0,0"/>
+
+        <!--<Grid>
+            <StackPanel Grid.Column="1"
+                        Grid.RowSpan="2"
+                        Margin="160,-356,-610,85"
+                        Panel.ZIndex="-1">
+                <Grid.RenderTransform>
+                    
+                </Grid.RenderTransform>
+                
+            </StackPanel>
+        </Grid>-->
     </Grid>
 </Window>
