@@ -9,7 +9,9 @@
         ResizeMode="NoResize"
         Title="MainWindow" Height="550" Width="500"
         Background="#0F0F2D">
+
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="330"/>
@@ -23,7 +25,27 @@
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
-        <TextBox Background="#39385D" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown_Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code" TextChanged="TextBox_TextChanged" IsEnabled="False"/>
+        <Grid Grid.ColumnSpan="3" 
+              VerticalAlignment="Top" 
+              HorizontalAlignment="Center"
+              Width="500"
+              Height="60"
+              Background="#0F0F2D"
+              MouseDown="Grid_MouseDown">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="65"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBox Background="#0F0F2D" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown_Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code" IsEnabled="False"/>
+        </Grid>
+
 
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label FontSize="20" Foreground="#FE6584">Timer in minutes:</Label>
@@ -36,18 +58,8 @@
         </StackPanel>
         <Label FontSize="18" Foreground="#FE6584" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="456" Margin="22,47,0,0" Grid.ColumnSpan="3"/>
 
-        <Button Content="x" FontSize="40" Foreground="#FE6584" Background="#39385D" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="2" Height="50" Width="42" Margin="0,-20,0,0"/>
+        <Button Content="x" FontSize="40" Foreground="#FE6584" Background="#39385D" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="2" Height="50" Width="42" Margin="0,0,0,30" Click="Button_Click_1"/>
+        <Button Content="_" FontSize="40" Foreground="#FE6584" Background="#39385D" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="0" Height="65" Width="36" Margin="0,-35,0,0" Click="Button_Click_2"/>
 
-        <!--<Grid>
-            <StackPanel Grid.Column="1"
-                        Grid.RowSpan="2"
-                        Margin="160,-356,-610,85"
-                        Panel.ZIndex="-1">
-                <Grid.RenderTransform>
-                    
-                </Grid.RenderTransform>
-                
-            </StackPanel>
-        </Grid>-->
     </Grid>
 </Window>

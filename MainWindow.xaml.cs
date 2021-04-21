@@ -39,15 +39,17 @@ namespace Shutdown_with_timer
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Shutdown(sender, e);
+            this.Close();
+            MessageBox.Show($"The PC will shutdown in {TextBox_Timer.Text} minutes");
         }
 
         private void Shutdown(object sender, RoutedEventArgs e)
         {
             bool timeconvert = int.TryParse(TextBox_Timer.Text, out _);
-            if (timeconvert == true)
+            if (timeconvert)
             {
                 string input = TextBox_Timer.Text;
-                if (input == "")
+                if (input?.Length == 0)
                 {
                     Shutdown(sender, e);
                 }
@@ -85,6 +87,24 @@ namespace Shutdown_with_timer
         {
             var textbox = sender as TextBox;
             textbox.Clear();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }
