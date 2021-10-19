@@ -10,7 +10,7 @@
         Title="Shutdown Timer" 
                       Height="550" 
                       Width="500"
-                      WindowTitleBrush="LightSlateGray">
+                      WindowTitleBrush="LightSlateGray" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" ResizeMode="NoResize">
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
@@ -33,15 +33,14 @@
             <RowDefinition/>
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
-        
+
 
         <Grid Grid.ColumnSpan="3" 
               VerticalAlignment="Top" 
               HorizontalAlignment="Center"
               Width="500"
               Height="60"
-              Background="#0F0F2D"
-              MouseDown="Grid_MouseDown">
+              Background="#0F0F2D">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="65"/>
@@ -53,19 +52,32 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBox Background="#0F0F2D" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown_Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code" IsEnabled="False"/>
+            <TextBox Background="#0F0F2D" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code" IsEnabled="False"/>
         </Grid>
 
 
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label FontSize="20" Foreground="#FE6584">Timer in minutes:</Label>
-            <TextBox x:Name ="TextBox_Timer" Background="#39385D" FontSize="35" Text="{Binding Zeit}" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
+            <TextBox x:Name ="TextBox_Timer" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#39385D" FontSize="35" Text="{Binding Zeit}" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
             <CheckBox Content="Sicher?" Background="#FE6584" Foreground="#FE6584" x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Button Margin="10" Padding="10" Content="Auftrag erteilen!" FontSize="40" Height="125" Background="LightGray" Click="Button_Click" IsEnabled="{Binding ElementName=chk,Path=IsChecked}"/>
         </StackPanel>
-        <Label FontSize="18" Foreground="#FE6584" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="456" Margin="22,47,0,0" Grid.ColumnSpan="3"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="3">
+            <Label FontSize="18" Foreground="#FE6584" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Center" Width="456" Margin="22,20,0,20" Grid.ColumnSpan="3"/>
+            <ComboBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="comboBox" Margin="100 10" Height="40" Width="300" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="Select..." IsReadOnly="True">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ComboBoxItem x:Name="shutdown">Shutdown</ComboBoxItem>
+                <ComboBoxItem x:Name="sleep" >Sleep</ComboBoxItem>
+                <ComboBoxItem x:Name="lockdesktop">Lock</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </controls:MetroWindow>
