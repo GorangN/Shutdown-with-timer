@@ -1,13 +1,15 @@
 ﻿namespace Shutdown_with_timer
 {
-    using System;
     using System.Diagnostics;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Forms;
+    using System.Resources;
 
     using MahApps.Metro.Controls;
+    using System;
 
     public partial class MainWindow : MetroWindow
     {
@@ -22,20 +24,31 @@
 
         public MainWindow()
         {
+            NotifyIcon _notifyIcon = new NotifyIcon();
+            //_notifyIcon.Icon = new System.Drawing.Icon(@"Resources/iconfinder_exit_17902.ico");
+            //_notifyIcon.Text = "Shutdown Timer";
+            //_notifyIcon.Click += NotifyIcon_Click;
+            //_notifyIcon.Visible = true;
+            //_notifyIcon.ContextMenuStrip.Items.Add("Status");
+
             InitializeComponent();
             DataContext = this;
+        }
+
+        private void NotifyIcon_Click(object sender, EventArgs e)
+        {
+            this.WindowState = WindowState.Normal;
+            this.Activate();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string value = TypeOfDestruction();
             this.WindowState = WindowState.Minimized;
-            if (this.WindowState == WindowState.Minimized)
-            {
-                Hide();
-                //TODO: Minimize to System Tray
-            }
-            MessageBox.Show($"The PC will {value} in {TextBox_Timer.Text} minutes \n\n Confirm with OK: ");
+            Hide();
+            //TODO: Minimize to System Tray
+
+            System.Windows.MessageBox.Show($"The PC will {value} in {TextBox_Timer.Text} minutes \n\n Confirm with OK: ");
             ExecuteCommand(sender, e, value);
         }
 
@@ -152,7 +165,7 @@
         }
         private void TextBox_Timer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var textbox = sender as TextBox;
+            var textbox = sender as System.Windows.Controls.TextBox;
             textbox.Clear();
         }
     }
