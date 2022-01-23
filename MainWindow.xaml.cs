@@ -23,6 +23,36 @@ namespace Shutdown_with_timer
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private ICommand _clickCommand;
+        public ICommand ClickCommand
+        {
+            get
+            {
+                return _clickCommand ?? (_clickCommand = new CommandHandler(() => MyAction(), () => CanExecute));
+            }
+        }
+        public bool CanExecute
+        {
+            get
+            {
+                // check if executing is allowed, i.e., validate, check if a process is running, etc. 
+                return true;
+            }
+        }
+
+        public void MyAction()
+        {
+            ExecutionSwitchTheme();
+        }
+
+        private void ExecutionSwitchTheme()
+        {
+            var theme = ThemeManager.Current.DetectTheme(App.Current);
+            var newTheme = ThemeManager.Current.GetInverseTheme(theme);
+            _ = ThemeManager.Current.ChangeTheme(App.Current, newTheme);
+            App.RaiseThemeChanged(newTheme);
+        }
+
         #region Zeitangabe
         //public int Zeit
         //{
@@ -91,22 +121,12 @@ namespace Shutdown_with_timer
             textbox.Clear();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
         }
     }
 }
