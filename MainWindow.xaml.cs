@@ -10,6 +10,7 @@
 
     using MahApps.Metro.Controls;
     using System;
+    using ControlzEx.Theming;
 
     public partial class MainWindow : MetroWindow
     {
