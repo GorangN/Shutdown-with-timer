@@ -19,7 +19,7 @@
         {
             get
             {
-                return _clickCommand ?? (_clickCommand = new CommandHandler(() => MyAction(), () => CanExecute));
+                return _clickCommand ?? (_clickCommand = new CommandHandler(() => ExecutionSwitchTheme(), () => CanExecute));
             }
         }
         public bool CanExecute
@@ -29,11 +29,6 @@
                 // check if executing is allowed, i.e., validate, check if a process is running, etc. 
                 return true;
             }
-        }
-
-        public void MyAction()
-        {
-            ExecutionSwitchTheme();
         }
 
         private void ExecutionSwitchTheme()
@@ -199,7 +194,6 @@
             var textbox = sender as System.Windows.Controls.TextBox;
             textbox.Clear();
         }
-<<<<<<< HEAD
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -208,7 +202,5 @@
                 DragMove();
             }
         }
-=======
->>>>>>> 746ba54dac73f59bb24e1b1fb346b9f42e5c25f6
     }
 }

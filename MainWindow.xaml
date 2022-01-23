@@ -7,20 +7,16 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:Shutdown_with_timer"
         Title="Shutdown Timer" 
-                      Height="550" 
-                      Width="500"
-<<<<<<< HEAD
-                      WindowTitleBrush="LightSlateGray"
-                      
-                      BorderThickness="0"
-                      GlowBrush="Black"
-                      ResizeMode="CanMinimize"
+        Height="550" 
+        Width="500"
+        WindowTitleBrush="LightSlateGray"
+        
+        BorderThickness="0"
+        GlowBrush="Black"
+        ResizeMode="CanMinimize"
 
-                      WindowTransitionsEnabled="False"
-                      WindowStartupLocation="CenterScreen">
-=======
-                      WindowTitleBrush="LightSlateGray" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" ResizeMode="NoResize">
->>>>>>> 746ba54dac73f59bb24e1b1fb346b9f42e5c25f6
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
@@ -30,7 +26,7 @@
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 
-    <Grid Background="{DynamicResource MahApps.Brushes.Accent4}">
+    <Grid Background="#0F0F2D">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="330"/>
@@ -38,61 +34,31 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="124*"/>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="143*"/>
+            <RowDefinition Height="143*"/>
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
-
-        <Grid Grid.ColumnSpan="3" 
-              VerticalAlignment="Top" 
-              HorizontalAlignment="Center"
-              Width="500"
-              Height="60"
-<<<<<<< HEAD
-              MouseDown="Grid_MouseDown">
-=======
-              Background="#0F0F2D">
->>>>>>> 746ba54dac73f59bb24e1b1fb346b9f42e5c25f6
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="65"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-<<<<<<< HEAD
-            <TextBox BorderBrush="Transparent" Background="BlueViolet" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown-Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code" IsEnabled="False"/>
-=======
-            <TextBox Background="#0F0F2D" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Cascadia Code" IsEnabled="False"/>
->>>>>>> 746ba54dac73f59bb24e1b1fb346b9f42e5c25f6
-        </Grid>
+        <TextBlock Background="Transparent" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Resources\stanberry\Stanberry.ttf"/>
 
 
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <Label FontSize="20" Foreground="#FE6584">Timer in minutes:</Label>
-<<<<<<< HEAD
-            <TextBox x:Name ="TextBox_Timer" Background="#39385D" FontSize="35" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
-=======
-            <TextBox x:Name ="TextBox_Timer" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#39385D" FontSize="35" Text="{Binding Zeit}" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
->>>>>>> 746ba54dac73f59bb24e1b1fb346b9f42e5c25f6
-            <CheckBox Content="Sicher?" Background="#FE6584" Foreground="#FE6584" x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,19,0,0" Grid.RowSpan="2">
+            <Label FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" Foreground="#FE6584">Timer in minutes:</Label>
+            <TextBox x:Name ="TextBox_Timer" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#39385D" FontSize="35" Text="{Binding Zeit}" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
+                <TextBlock Foreground="#FE6584">Sicher?</TextBlock>
+            </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="1">
-            <Button Margin="10" Padding="10" HorizontalContentAlignment="Center" Content="Auftrag erteilen!" FontSize="40" Height="125" Background="LightGray" Click="Button_Click" IsEnabled="{Binding ElementName=chk,Path=IsChecked}"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,143,0,0" Grid.RowSpan="2">
+            <Button Margin="10" Padding="10" HorizontalContentAlignment="Center" Content="Auftrag erteilen!" FontFamily="Resources\stanberry\Stanberry.ttf" FontSize="30" Height="125" Background="LightGray" Click="Button_Click" IsEnabled="{Binding ElementName=chk,Path=IsChecked}"/>
         </StackPanel>
-<<<<<<< HEAD
-        <Label HorizontalAlignment="Center" FontSize="18" Foreground="#FE6584" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" Grid.Row="1" VerticalAlignment="Top" Width="456" Margin="22,47,0,0" Grid.ColumnSpan="3"/>
-=======
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="3">
-            <Label FontSize="18" Foreground="#FE6584" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Center" Width="456" Margin="22,20,0,20" Grid.ColumnSpan="3"/>
-            <ComboBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="comboBox" Margin="100 10" Height="40" Width="300" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="Select..." IsReadOnly="True">
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Label FontSize="18" Foreground="#FE6584" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Center" FontFamily="Resources\stanberry\Stanberry.ttf" Width="456" Margin="22,20,0,20" Grid.ColumnSpan="3"/>
+            <ComboBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="comboBox" Margin="100 10" Height="40" Width="300" FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="Select..." IsReadOnly="True">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -104,6 +70,5 @@
                 <ComboBoxItem x:Name="lockdesktop">Lock</ComboBoxItem>
             </ComboBox>
         </StackPanel>
->>>>>>> 746ba54dac73f59bb24e1b1fb346b9f42e5c25f6
     </Grid>
 </controls:MetroWindow>
