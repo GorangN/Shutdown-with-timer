@@ -26,7 +26,7 @@
         {
             get
             {
-                // check if executing is allowed, i.e., validate, check if a process is running, etc. 
+                // check if executing is allowed, i.e., validate, check if a process is running, etc.
                 return true;
             }
         }
