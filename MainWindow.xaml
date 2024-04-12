@@ -26,7 +26,7 @@
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 
-    <Grid Background="#0F0F2D">
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="330"/>
@@ -41,15 +41,15 @@
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Background="Transparent" Foreground="#FE6584" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Resources\stanberry\Stanberry.ttf"/>
+        <TextBlock Background="Transparent" Foreground="#DD0B2F" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Resources\stanberry\Stanberry.ttf"/>
 
 
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,19,0,0" Grid.RowSpan="2">
-            <Label FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" Foreground="#FE6584">Timer in minutes:</Label>
-            <TextBox x:Name ="TextBox_Timer" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#39385D" FontSize="35" Text="{Binding Zeit}" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
+            <Label FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" Foreground="Black">Timer in minutes:</Label>
+            <TextBox x:Name ="TextBox_Timer" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#D1344F" Opacity="0.5" FontSize="35" Text="{Binding Zeit}" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
             <StackPanel Orientation="Horizontal">
                 <CheckBox x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
-                <TextBlock Foreground="#FE6584">Sicher?</TextBlock>
+                <TextBlock Foreground="Black">Sicher?</TextBlock>
             </StackPanel>
         </StackPanel>
 
@@ -57,11 +57,11 @@
             <Button Margin="10" Padding="10" HorizontalContentAlignment="Center" Content="Auftrag erteilen!" FontFamily="Resources\stanberry\Stanberry.ttf" FontSize="30" Height="125" Background="LightGray" Click="Button_Click" IsEnabled="{Binding ElementName=chk,Path=IsChecked}"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">
-            <Label FontSize="18" Foreground="#FE6584" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Center" FontFamily="Resources\stanberry\Stanberry.ttf" Width="456" Margin="22,20,0,20" Grid.ColumnSpan="3"/>
+            <Label FontSize="18" Foreground="Black" Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Center" FontFamily="Resources\stanberry\Stanberry.ttf" Width="456" Margin="22,20,0,20" Grid.ColumnSpan="3"/>
             <ComboBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="comboBox" Margin="100 10" Height="40" Width="300" FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="Select..." IsReadOnly="True">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#999999"/>
                         <GradientStop Color="White" Offset="1"/>
                     </LinearGradientBrush>
                 </ComboBox.Background>
