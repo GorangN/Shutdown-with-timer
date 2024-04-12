@@ -58,13 +58,13 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
             <Label FontSize="18"  Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Left" FontFamily="Resources\stanberry\Stanberry.ttf" Width="456" Margin="22,20,0,20" Grid.ColumnSpan="3" HorizontalContentAlignment="Center"/>
-            <ComboBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="comboBox" Margin="100 10" Height="40" Width="300" FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text=" Select..." IsReadOnly="True">
-                <ComboBox.Background>
+            <ComboBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="comboBox" Margin="100 10" Height="40" Width="300" FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="-- Select --" IsReadOnly="True">
+                <!--<ComboBox.Background>
                     <LinearGradientBrush EndPoint="0.5,4" StartPoint="0.5,0">
                         <GradientStop Color="#999999"/>
                         <GradientStop Color="#DD0B2F" Offset="1"/>
                     </LinearGradientBrush>
-                </ComboBox.Background>
+                </ComboBox.Background>-->
                 <ComboBoxItem x:Name="shutdown">Shutdown</ComboBoxItem>
                 <ComboBoxItem x:Name="sleep" >Sleep</ComboBoxItem>
                 <ComboBoxItem x:Name="lockdesktop">Lock</ComboBoxItem>

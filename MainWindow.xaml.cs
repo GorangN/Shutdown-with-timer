@@ -11,6 +11,7 @@
     using MahApps.Metro.Controls;
     using System;
     using ControlzEx.Theming;
+    using static System.Net.Mime.MediaTypeNames;
 
     public partial class MainWindow : MetroWindow
     {
