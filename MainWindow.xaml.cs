@@ -74,7 +74,7 @@
             Hide();
             //TODO: Minimize to System Tray
 
-            System.Windows.MessageBox.Show($"The PC will {value} in {TextBox_Timer.Text} minutes \n\n Confirm with OK: ");
+            // System.Windows.MessageBox.Show($"The PC will {value} in {TextBox_Timer.Text} minutes \n\n Confirm with OK: ");
             ExecuteCommand(sender, e, value);
         }
 
