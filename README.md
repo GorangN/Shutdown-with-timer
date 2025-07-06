@@ -63,3 +63,24 @@ Shutdown-with-timer/
 │   └── ShutdownTimerSetup.iss
 ├── src/                         # Quellcode der Anwendung (MainWindow.xaml etc.)
 └── .gitignore
+```
+
+### 🛠 Build & Installer erstellen
+
+1. Projekt in Release-Modus kompilieren (`net8.0-windows`)
+2. Inno Setup öffnen → `Setup/ShutdownTimerSetup.iss` → Kompilieren (`F9`)
+3. Installer wird unter `Documents\Output\ShutdownTimerSetup.exe` generiert
+
+---
+
+## 🧾 Lizenz
+
+Dieses Projekt steht unter der [MIT-Lizenz](./LICENSE.txt).  
+Du darfst den Code frei verwenden, verändern und weiterverbreiten, auch für kommerzielle Zwecke – unter Angabe des ursprünglichen Autors.
+
+---
+
+## 📫 Kontakt
+
+Entwickelt von **Gorang Nagpal**  
+Bei Fragen oder Feedback: gerne ein [Issue](https://github.com/GorangN/Shutdown-with-timer/issues) eröffnen.
