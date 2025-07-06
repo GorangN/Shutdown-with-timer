@@ -21,6 +21,11 @@ Der Installer steht im aktuellen GitHub Release zur Verfügung:
 
 ➡️ [**ShutdownTimerSetup.exe** – aktuelle Version herunterladen](https://github.com/GorangN/Shutdown-with-timer/releases/latest/download/ShutdownTimerSetup.exe)
 
+### 🔄 Andere Versionen
+
+Für weitere Plattformen und ältere Versionen siehe:  
+➡️ [Alle Releases anzeigen](https://github.com/GorangN/Shutdown-with-timer/releases)
+
 ---
 
 ## 🚀 Installation
