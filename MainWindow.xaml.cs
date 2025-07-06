@@ -1,20 +1,36 @@
 ﻿namespace Shutdown_with_timer
 {
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Input;
-    using System.Windows.Forms;
-    using System.Resources;
-
+    using ControlzEx.Theming;
     using MahApps.Metro.Controls;
     using System;
-    using ControlzEx.Theming;
-    using static System.Net.Mime.MediaTypeNames;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Data;
+    using System.Windows.Forms;
+    using System.Windows.Input;
+
+    public class IntToStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value?.ToString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var str = value as string;
+            if (int.TryParse(str, out int result))
+                return result;
+
+            return DependencyProperty.UnsetValue; // verhindert Binding-Fehler
+        }
+    }
 
     public partial class MainWindow : MetroWindow
     {
+
         private ICommand _clickCommand;
         public ICommand ClickCommand
         {

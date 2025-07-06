@@ -18,6 +18,11 @@
         WindowTransitionsEnabled="False"
         WindowStartupLocation="CenterScreen">
 
+    <Window.Resources>
+        <local:IntToStringConverter x:Key="IntToStringConverter"/>
+    </Window.Resources>
+
+
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
             <Button Command="{Binding ClickCommand}">
@@ -46,7 +51,7 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,19,0,0" Grid.RowSpan="2">
             <Label FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" >Timer in minutes:</Label>
-            <TextBox x:Name ="TextBox_Timer" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#D1344F" Opacity="0.5" FontSize="35" Text="{Binding Zeit}" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
+            <TextBox x:Name ="TextBox_Timer" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#D1344F" Opacity="0.5" FontSize="35" Text="{Binding Zeit, Converter={StaticResource IntToStringConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
             <StackPanel Orientation="Horizontal">
                 <CheckBox x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
                 <TextBlock>Sicher?</TextBlock>
