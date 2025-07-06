@@ -69,13 +69,6 @@ Shutdown-with-timer/
 ├── src/                         # Quellcode der Anwendung (MainWindow.xaml etc.)
 └── .gitignore
 ```
-
-### 🛠 Build & Installer erstellen
-
-1. Projekt in Release-Modus kompilieren (`net8.0-windows`)
-2. Inno Setup öffnen → `Setup/ShutdownTimerSetup.iss` → Kompilieren (`F9`)
-3. Installer wird unter `Documents\Output\ShutdownTimerSetup.exe` generiert
-
 ---
 
 ## 🧾 Lizenz
