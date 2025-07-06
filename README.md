@@ -1,84 +1,85 @@
 # Shutdown with Timer
 
-**Shutdown with Timer** ist ein einfaches, modernes Windows-Tool zum zeitgesteuerten Herunterfahren, Sperren oder Schlafenlegen des PCs.  
-Die Anwendung wurde mit C# (.NET 8) und WPF entwickelt und verwendet das [MahApps.Metro UI-Framework](https://github.com/MahApps/MahApps.Metro) für eine moderne Benutzeroberfläche.
+**Shutdown with Timer** is a simple, modern Windows tool to schedule shutdown, lock, or sleep actions on your PC.  
+The app is developed using C# (.NET 8) and WPF, and uses the [MahApps.Metro UI framework](https://github.com/MahApps/MahApps.Metro) for a clean, modern user interface.
 
 ---
 
-## 🧩 Funktionen
+## 🧩 Features
 
-- Zeitgesteuertes **Herunterfahren**, **Sperren** oder **Schlafenlegen**
-- Eingabe der Zeit in **Minuten**
-- Moderne Oberfläche mit Dark/Light-Theme
-- Minimierung in den System-Tray
-- Kompakte, ressourcenschonende Anwendung
+- Scheduled **shutdown**, **lock**, or **sleep**
+- Input time in **minutes**
+- Modern UI with dark/light theme support
+- Minimizes to the system tray
+- Lightweight and resource-friendly
 
 ---
 
 ## 📥 Download
 
-Der Installer steht im aktuellen GitHub Release zur Verfügung:
+The installer is available in the latest GitHub release:
 
-➡️ [**ShutdownTimerSetup.exe** – aktuelle Version herunterladen](https://github.com/GorangN/Shutdown-with-timer/releases/latest/download/ShutdownTimerSetup.exe)
+➡️ [**Download ShutdownTimerSetup.exe** – Latest version](https://github.com/GorangN/Shutdown-with-timer/releases/latest/download/ShutdownTimerSetup.exe)
 
-### 🔄 Andere Versionen
+### 🔄 Other Versions
 
-Für weitere Plattformen und ältere Versionen siehe:  
-➡️ [Alle Releases anzeigen](https://github.com/GorangN/Shutdown-with-timer/releases)
+For other platforms and older releases, visit:  
+➡️ [View all releases](https://github.com/GorangN/Shutdown-with-timer/releases)
 
 ---
 
 ## 🚀 Installation
 
-1. Lade den Installer herunter
-2. Starte `ShutdownTimerSetup.exe`
-3. Folge dem Setup-Assistenten
-4. Anwendung nach der Installation über Startmenü oder Desktop-Icon starten
+1. Download the installer  
+2. Run `ShutdownTimerSetup.exe`  
+3. Follow the setup wizard  
+4. Launch the app via the Start Menu or Desktop shortcut
 
-> Der Installer legt das Programm standardmäßig unter `C:\Program Files\Shutdown with Timer` ab.
-
----
-
-## 🖥️ Systemanforderungen
-
-| Voraussetzung         | Details                       |
-|------------------------|-------------------------------|
-| Betriebssystem         | Windows 10 oder Windows 11 (64 Bit) |
-| .NET Runtime           | .NET 8 (wird automatisch mitgeliefert, wenn nicht vorhanden) |
+> By default, the app is installed to `C:\Program Files\Shutdown with Timer`.
 
 ---
 
-## 🧑‍💻 Entwicklung
+## 🖥️ System Requirements
 
-Dieses Projekt ist vollständig Open Source.
+| Requirement         | Details                             |
+|---------------------|--------------------------------------|
+| Operating System    | Windows 10 or Windows 11 (64-bit)    |
+| .NET Runtime        | .NET 8 (automatically bundled if missing) |
 
-### 💡 Technologien
+---
+
+## 🧑‍💻 Development
+
+This project is fully open source.
+
+### 💡 Technologies
 
 - [.NET 8 (WPF, C#)](https://dotnet.microsoft.com/)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
-- [Inno Setup](https://jrsoftware.org/isinfo.php) für den Installer
+- [Inno Setup](https://jrsoftware.org/isinfo.php) for the installer
 
-### 📁 Projektstruktur
+### 📁 Project Structure
 
 ```plaintext
 Shutdown-with-timer/
-├── LICENSE.txt                  # MIT-Lizenz
-├── README.md                    # Dieses Dokument
-├── Setup/                       # Inno Setup Skript
+├── LICENSE.txt                  # MIT License
+├── README.md                    # This file
+├── Setup/                       # Inno Setup script
 │   └── ShutdownTimerSetup.iss
-├── src/                         # Quellcode der Anwendung (MainWindow.xaml etc.)
+├── src/                         # App source code (MainWindow.xaml etc.)
 └── .gitignore
 ```
----
-
-## 🧾 Lizenz
-
-Dieses Projekt steht unter der [MIT-Lizenz](./LICENSE.txt).  
-Du darfst den Code frei verwenden, verändern und weiterverbreiten, auch für kommerzielle Zwecke – unter Angabe des ursprünglichen Autors.
 
 ---
 
-## 📫 Kontakt
+## 🧾 License
 
-Entwickelt von **Gorang Nagpal**  
-Bei Fragen oder Feedback: gerne ein [Issue](https://github.com/GorangN/Shutdown-with-timer/issues) eröffnen.
+This project is licensed under the [MIT License](./LICENSE.txt).  
+You are free to use, modify, and distribute the code, including for commercial purposes – with proper attribution to the original author.
+
+---
+
+## 📫 Contact
+
+Developed by **Gorang Nagpal**  
+For questions or feedback, feel free to [open an issue](https://github.com/GorangN/Shutdown-with-timer/issues).
