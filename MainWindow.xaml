@@ -6,74 +6,148 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:Shutdown_with_timer"
-        Title="Shutdown Timer" 
-        Height="550" 
-        Width="500"
-        WindowTitleBrush="LightSlateGray"
-        
+        Title="Shutdown Timer"
+        Height="480"
+        Width="440"
         BorderThickness="0"
-        GlowBrush="Black"
         ResizeMode="CanMinimize"
-
-        WindowTransitionsEnabled="False"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI"
+        >
 
     <Window.Resources>
         <local:IntToStringConverter x:Key="IntToStringConverter"/>
     </Window.Resources>
 
-
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Command="{Binding ClickCommand}">
-                <iconPacks:Modern Kind="Contrast"/>
+            <Button Command="{Binding ClickCommand}" ToolTip="Toggle Theme">
+                <iconPacks:Modern Kind="Contrast" Width="20" Height="20" />
             </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="330"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="30" MouseDown="Grid_MouseDown">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="124*"/>
-            <RowDefinition Height="19*"/>
-            <RowDefinition Height="143*"/>
-            <RowDefinition Height="143*"/>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Background="Transparent" Foreground="#DD0B2F" Grid.ColumnSpan="3" Grid.Row="0" Text="Shutdown Timer" HorizontalAlignment="Center" FontSize="45" FontFamily="Resources\stanberry\Stanberry.ttf"/>
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Text="Shutdown Timer" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="#00D8FF" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="False">
+                            <Setter Property="Foreground" Value="#00D8FF" />
+                            <!-- Darkmode (bleibt Türkis) -->
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="True">
+                            <Setter Property="Foreground" Value="Black" />
+                            <!-- Heller Modus = Schwarz -->
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
 
+        <!-- Info Text -->
+        <TextBlock Grid.Row="1" Text="Your PC will shut down after the specified time." FontSize="17" HorizontalAlignment="Center" Margin="0 0 0 10" />
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,19,0,0" Grid.RowSpan="2">
-            <Label FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" >Timer in minutes:</Label>
-            <TextBox x:Name ="TextBox_Timer" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#D1344F" Opacity="0.5" FontSize="35" Text="{Binding Zeit, Converter={StaticResource IntToStringConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" Width="328"/>
-            <StackPanel Orientation="Horizontal">
-                <CheckBox x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}"/>
-                <TextBlock>Sicher?</TextBlock>
+        <!-- Form -->
+        <StackPanel Grid.Row="2" VerticalAlignment="Center">
+            <ComboBox x:Name="comboBox" Width="260" Height="36" FontSize="16" HorizontalAlignment="Center" SelectedIndex="0">
+                <ComboBox.Style>
+                    <Style TargetType="ComboBox">
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="Background" Value="White" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="False">
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="Background" Value="White" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="True">
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="Background" Value="#1f1f1f" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Style>
+                <ComboBoxItem IsEnabled="False" IsSelected="True">-- Select an action --</ComboBoxItem>
+                <ComboBoxItem x:Name="shutdown">Shutdown</ComboBoxItem>
+                <ComboBoxItem x:Name="sleep">Sleep</ComboBoxItem>
+                <ComboBoxItem x:Name="lockdesktop">Lock</ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock Text="Timer in minutes:" FontSize="16" Margin="0 10 0 5" />
+            <Border CornerRadius="6"
+                    BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="1"
+                    Background="{StaticResource InputBackgroundBrush}"
+                    Margin="0 5 0 0"
+                    Padding="2">
+                <TextBox x:Name="TextBox_Timer"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Foreground="{StaticResource TextBrush}"
+                         FontSize="22"
+                         Height="40"
+                         VerticalContentAlignment="Center"
+                         TextAlignment="Center"
+                         Text="{Binding Zeit, Converter={StaticResource IntToStringConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         PreviewMouseLeftButtonDown="TextBox_Timer_PreviewMouseLeftButtonDown" />
+            </Border>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 10 0 0">
+                <CheckBox x:Name="chk" IsEnabled="{Binding ElementName=TextBox_Timer, Path=Text.Length}" />
+                <TextBlock Text=" Confirm?" VerticalAlignment="Center" FontSize="15" />
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,143,0,0" Grid.RowSpan="2">
-            <Button Margin="10" Padding="10" HorizontalContentAlignment="Center" Foreground="Black" Content="Auftrag erteilen!" FontFamily="Resources\stanberry\Stanberry.ttf" FontSize="30" Height="125" Background="LightGray" Click="Button_Click" IsEnabled="{Binding ElementName=chk,Path=IsChecked}"/>
-        </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
-            <Label FontSize="18"  Content="Der PC wird in der angegebenen Zeit heruntergefahren!" HorizontalAlignment="Left" FontFamily="Resources\stanberry\Stanberry.ttf" Width="456" Margin="22,20,0,20" Grid.ColumnSpan="3" HorizontalContentAlignment="Center"/>
-            <ComboBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="comboBox" Margin="100 10" Height="40" Width="300" FontSize="20" FontFamily="Resources\stanberry\Stanberry.ttf" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="-- Select --" IsReadOnly="True">
-                <!--<ComboBox.Background>
-                    <LinearGradientBrush EndPoint="0.5,4" StartPoint="0.5,0">
-                        <GradientStop Color="#999999"/>
-                        <GradientStop Color="#DD0B2F" Offset="1"/>
-                    </LinearGradientBrush>
-                </ComboBox.Background>-->
-                <ComboBoxItem x:Name="shutdown">Shutdown</ComboBoxItem>
-                <ComboBoxItem x:Name="sleep" >Sleep</ComboBoxItem>
-                <ComboBoxItem x:Name="lockdesktop">Lock</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
+        <!-- Button -->
+        <Button Grid.Row="3"
+                Content="EXECUTE TASK"
+                Width="260"
+                Height="55"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Margin="0 10 0 10"
+                HorizontalAlignment="Center"
+                Click="Button_Click"
+                IsEnabled="{Binding ElementName=chk, Path=IsChecked}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#2ea043" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="BorderBrush" Value="#2ea043" />
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="True">
+                            <Setter Property="Background" Value="#E0E0E0" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="BorderBrush" Value="#A0A0A0" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <!-- Footer / Version -->
+        <TextBlock Grid.Row="4" Text="v1.0.0" FontSize="12" HorizontalAlignment="Right">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="#8B949E" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="True">
+                            <Setter Property="Foreground" Value="Gray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </Grid>
 </controls:MetroWindow>

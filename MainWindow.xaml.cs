@@ -38,23 +38,12 @@
         }
 
         #region Zeitangabe
-        //public int Zeit
-        //{
-        //    get { return (int)GetValue(ZeitProperty); }
-        //    set { SetValue(ZeitProperty, value); }
-        //}
         public static readonly DependencyProperty ZeitProperty = DependencyProperty.Register("Zeit", typeof(int), typeof(MainWindow));
         #endregion
 
         public MainWindow()
         {
             NotifyIcon _notifyIcon = new NotifyIcon();
-            //_notifyIcon.Icon = new System.Drawing.Icon(@"Resources/iconfinder_exit_17902.ico");
-            //_notifyIcon.Text = "Shutdown Timer";
-            //_notifyIcon.Click += NotifyIcon_Click;
-            //_notifyIcon.Visible = true;
-            //_notifyIcon.ContextMenuStrip.Items.Add("Status");
-
             InitializeComponent();
             DataContext = this;
         }
