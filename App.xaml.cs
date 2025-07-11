@@ -1,30 +1,22 @@
 ﻿using ControlzEx.Theming;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
 using Microsoft.Win32;
-
+using System;
+using System.Windows;
 
 namespace Shutdown_with_timer
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         public static event EventHandler<Theme> ThemeChanged;
-        public static void RaiseThemeChanged(Theme newTheme) => ThemeChanged?.Invoke(null, newTheme);
+
+        public static void RaiseThemeChanged(Theme newTheme) =>
+            ThemeChanged?.Invoke(null, newTheme);
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            ApplySystemTheme();
             SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
+            ApplySystemTheme();
         }
 
         private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
@@ -38,9 +30,29 @@ namespace Shutdown_with_timer
         private void ApplySystemTheme()
         {
             bool isDark = IsWindowsInDarkMode();
-            var themeName = isDark ? "Dark.Blue" : "Light.Blue";
-            ThemeManager.Current.ChangeTheme(Application.Current, themeName);
-            RaiseThemeChanged(ThemeManager.Current.DetectTheme(Application.Current));
+
+            if (isDark)
+            {
+                ThemeManager.Current.ChangeTheme(this, "Dark.Blue");
+            }
+            else
+            {
+                // CustomLight.xaml muss im Projekt enthalten sein
+                try
+                {
+                    var customLightDict = new ResourceDictionary
+                    {
+                        Source = new Uri("CustomLight.xaml", UriKind.Relative)
+                    };
+                    Resources.MergedDictionaries.Add(customLightDict);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("CustomLight.xaml konnte nicht geladen werden: " + ex.Message);
+                }
+            }
+
+            RaiseThemeChanged(ThemeManager.Current.DetectTheme(this));
         }
 
         private bool IsWindowsInDarkMode()
@@ -49,7 +61,9 @@ namespace Shutdown_with_timer
             {
                 using var key = Registry.CurrentUser.OpenSubKey(@"Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize");
                 if (key?.GetValue("AppsUseLightTheme") is int value)
+                {
                     return value == 0;
+                }
             }
             catch { }
 
@@ -62,5 +76,4 @@ namespace Shutdown_with_timer
             base.OnExit(e);
         }
     }
-
 }
