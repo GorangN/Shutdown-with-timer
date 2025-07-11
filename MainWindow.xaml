@@ -60,7 +60,7 @@
 
         <!-- Form -->
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
-            <ComboBox x:Name="comboBox" Width="260" Height="36" FontSize="16" HorizontalAlignment="Center" SelectedIndex="0">
+            <ComboBox x:Name="comboBox" Width="260" Height="36" FontSize="18" FontStyle="Italic" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" SelectedIndex="0">
                 <ComboBox.Style>
                     <Style TargetType="ComboBox">
                         <Setter Property="Foreground" Value="Black" />
